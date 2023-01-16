@@ -1,14 +1,20 @@
-var product1PBtn = document.querySelectorAll('.plusBtn');
-var product1MBtn = document.getElementById('product1MBtn');
+var productPBtn = document.querySelectorAll('.plusBtn');
+var productMBtn = document.querySelectorAll('.minusBtn');
 
 var totalPrice = document.getElementById('totalPrice');
 
 total();
 
-product1PBtn.forEach(function(element) {
+productPBtn.forEach(function(element) {
   var updatePrice = element.parentNode.parentNode.querySelector('.productPrice');
   let fixedPrice = (updatePrice.innerHTML).slice(1);
   increasePrice(element,fixedPrice,updatePrice)
+});
+
+productMBtn.forEach(function(element) {
+  var eachPrice = element.parentNode.parentNode.querySelector('.productPrice');
+  let fixedPrice = (eachPrice.innerHTML).slice(1);
+  decreasePrice(element,fixedPrice,eachPrice)
 });
 
 
@@ -32,13 +38,15 @@ function total(){
   totalPrice.innerHTML = '$'+ sumTotalPrice;
 }
 
-function decreasePrice(product){
-  var updatedPrice = (product1Price.innerText).slice(1);
-  price = parseFloat(updatedPrice) - parseInt(fixedPrice);
-  product.innerHTML = '$'+price;
-  totalPrice.innerHTML = '$'+ price;
-  if(updatedPrice <= 0){
-    product1Price.innerHTML = '$'+0;
-  }
+function decreasePrice(element,fixedPrice,updatePrice){
+  element.addEventListener('click', function(){
+    var currentPrice = element.parentNode.parentNode.querySelector('.productPrice');
+    price = parseFloat(currentPrice.innerHTML.slice(1)) - parseFloat(fixedPrice);
+    updatePrice.innerHTML = '$'+price;
+    total();
+    if(parseFloat(currentPrice.innerHTML.slice(1)) <= 0){
+      element.setAttribute('disabled', '')
+    }
+  });
 }
 
