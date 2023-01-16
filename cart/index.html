@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sopping Cart</title>
+  <title>Shopping Cart</title>
   <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/css/bootstrap.min.css'/>
   <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css'/>
   <link rel="stylesheet" href="style.css">
@@ -47,13 +47,13 @@
                           <input id="form1" min="0" name="quantity" value="1" type="number"
                             class="form-control form-control-sm" />
     
-                          <button class="btn btn-link px-2" id="product1PBtn"
+                          <button class="btn btn-link px-2 plusBtn" id="product1PBtn"
                             onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
                             <i class="fas fa-plus"></i>
                           </button>
                         </div>
                         <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
-                          <h6 class="mb-0" id="product1Price">$44.00</h6>
+                          <h6 class="mb-0 productPrice" id="product1Price">$10.00</h6>
                         </div>
                         <div class="col-md-1 col-lg-1 col-xl-1 text-end">
                           <a href="#!" class="text-muted"><i class="fas fa-times"></i></a>
@@ -81,13 +81,13 @@
                           <input id="form1" min="0" name="quantity" value="1" type="number"
                             class="form-control form-control-sm" />
     
-                          <button class="btn btn-link px-2"
+                          <button class="btn btn-link px-2 plusBtn"
                             onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
                             <i class="fas fa-plus"></i>
                           </button>
                         </div>
                         <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
-                          <h6 class="mb-0">$ 44.00</h6>
+                          <h6 class="mb-0 productPrice" id="product2Price">$20.00</h6>
                         </div>
                         <div class="col-md-1 col-lg-1 col-xl-1 text-end">
                           <a href="#!" class="text-muted"><i class="fas fa-times"></i></a>
@@ -115,13 +115,13 @@
                           <input id="form1" min="0" name="quantity" value="1" type="number"
                             class="form-control form-control-sm" />
     
-                          <button class="btn btn-link px-2"
+                          <button class="btn btn-link px-2 plusBtn"
                             onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
                             <i class="fas fa-plus"></i>
                           </button>
                         </div>
                         <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
-                          <h6 class="mb-0">$ 44.00</h6>
+                          <h6 class="mb-0 productPrice">$30.00</h6>
                         </div>
                         <div class="col-md-1 col-lg-1 col-xl-1 text-end">
                           <a href="#!" class="text-muted"><i class="fas fa-times"></i></a>
@@ -148,7 +148,7 @@
                       <hr class="my-4">
                       <div class="d-flex justify-content-between mb-5">
                         <h5 class="text-uppercase">Total price</h5>
-                        <h5>$ 137.00</h5>
+                        <h5 id="totalPrice">$ 0</h5>
                       </div>
     
                       <button type="button" class="btn btn-dark btn-block btn-lg"
