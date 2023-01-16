@@ -1,12 +1,9 @@
 var product1PBtn = document.querySelectorAll('.plusBtn');
 var product1MBtn = document.getElementById('product1MBtn');
-var product1Price = document.getElementById('product1Price');
 
 var totalPrice = document.getElementById('totalPrice');
-var currentTotal = (product1Price.innerText).slice(1);
-totalPrice.innerHTML = '$'+ (parseFloat(currentTotal));
-var price;
 
+total();
 
 product1PBtn.forEach(function(element) {
   var updatePrice = element.parentNode.parentNode.querySelector('.productPrice');
@@ -15,22 +12,24 @@ product1PBtn.forEach(function(element) {
 });
 
 
-product1MBtn.addEventListener('click', function(){
-  var q1 = document.getElementById('form1').value;
-  decreasePrice(product1Price);
-});
-
 function increasePrice(element,fixedPrice,updatePrice){
   element.addEventListener('click', function(){
     var q1 = element.parentNode.querySelector('.form-control').value;
     price = parseFloat((fixedPrice)) * parseInt(q1);
     updatePrice.innerHTML = '$'+price;
-
-    //current total
-    
-    //add product price
-    totalPrice.innerHTML = '$'+ price;
+    total();
   });
+}
+
+function total(){
+  var productPrices = document.querySelectorAll('.productPrice');
+  var allPrices = []
+  var sumTotalPrice = 0;
+  for(i=0; i<productPrices.length; i++){
+    allPrices.push(parseFloat(productPrices[i].innerHTML.slice(1)));
+    sumTotalPrice = sumTotalPrice + allPrices[i];
+  }
+  totalPrice.innerHTML = '$'+ sumTotalPrice;
 }
 
 function decreasePrice(product){
